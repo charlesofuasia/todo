@@ -1,0 +1,132 @@
+/* Global styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  /* Body styling */
+  body {
+    background-color: #f4f4f9;
+    color: #333;
+    padding: 20px;
+  }
+  
+  /* Header styling */
+  h1 {
+    font-size: 2.5rem;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  h2 {
+    font-size: 1.8rem;
+    color: #555;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  
+  /* Form styling */
+  .new-goal-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .goal-row {
+    display: flex;
+    align-items: center;
+  }
+  
+  .goal-row label {
+    font-size: 1rem;
+    margin-right: 10px;
+  }
+  
+  .goal-row input {
+    padding: 8px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+    width: 300px;
+  }
+  
+  .goal-row button {
+    padding: 8px 16px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #4caf50;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .goal-row button:hover {
+    background-color: #45a049;
+  }
+  
+  /* Goals list */
+  .list {
+    list-style-type: none;
+    padding: 0;
+    margin: 20px auto;
+    max-width: 600px;
+  }
+  
+  .list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .list li label {
+    font-size: 1.2rem;
+    color: #333;
+    display: flex;
+    align-items: center;
+  }
+  
+  .list li input[type="checkbox"] {
+    margin-right: 10px;
+  }
+  
+  .list button {
+    padding: 6px 12px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #e53935;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .list button:hover {
+    background-color: #d32f2f;
+  }
+  
+  /* Empty list message */
+  .list.empty {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #777;
+    padding: 20px;
+  }
+  
