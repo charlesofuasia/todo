@@ -23,6 +23,7 @@ function App() {
         ...currentGoals,
         { id: crypto.randomUUID(), title: newGoal, completed: false },
       ];
+      
     });
    }
     setNewGoal("");
