@@ -1,60 +1,52 @@
-import React, { useState, useEffect } from "react";
-import './styles.css';
-import GoalForm from "./GoalForm";
-import GoalsList from "./GoalsList";
+import { useEffect, useState } from "react"
+import { NewTodoForm } from "./NewTodoForm"
+import "./styles.css"
+import { TodoList } from "./TodoList"
 
-function App() {
-  const [newGoal, setNewGoal] = useState("");
-  const [goals, setGoals] = useState(()=> {
-    const localValue = localStorage.getItem("GOALS");
-    if(localValue === null) return [];
-    return JSON.parse(localValue);
-  });
+export default function App() {
+  const [todos, setTodos] = useState(() => {
+    const localValue = localStorage.getItem("ITEMS")
+    if (localValue == null) return []
+
+    return JSON.parse(localValue)
+  })
 
   useEffect(() => {
-    localStorage.setItem("GOALS", JSON.stringify(goals))
-  }, [goals])
+    localStorage.setItem("ITEMS", JSON.stringify(todos))
+  }, [todos])
 
-  function handleSubmit(e) {
-    e.preventDefault();
-   if (newGoal.trim() !== ""){
-    setGoals((currentGoals) => {
+  function addTodo(title) {
+    setTodos(currentTodos => {
       return [
-        ...currentGoals,
-        { id: crypto.randomUUID(), title: newGoal, completed: false },
-      ];
-      
-    });
-   }
-    setNewGoal("");
+        ...currentTodos,
+        { id: crypto.randomUUID(), title, completed: false },
+      ]
+    })
   }
 
-  function toggleGoal(id, completed) {
-    setGoals((currentGoals) => {
-      return currentGoals.map((goal) => {
-        if (goal.id === id) {
-          goal.completed = completed;
-          return { ...goal, completed };
+  function toggleTodo(id, completed) {
+    setTodos(currentTodos => {
+      return currentTodos.map(todo => {
+        if (todo.id === id) {
+          return { ...todo, completed }
         }
-        return goal;
-      });
-    });
+
+        return todo
+      })
+    })
   }
 
-  function deleteGoal(id) {
-    setGoals((currentGoals) => {
-      return currentGoals.filter((goal) => goal.id !== id);
-    });
+  function deleteTodo(id) {
+    setTodos(currentTodos => {
+      return currentTodos.filter(todo => todo.id !== id)
+    })
   }
 
   return (
     <>
-      <h1>Daily Goals</h1>
-      <GoalForm newGoal={newGoal} setNewGoal={setNewGoal} handleSubmit={handleSubmit} />
-      <h2>Goals List</h2>
-      <GoalsList goals={goals} toggleGoal={toggleGoal} deleteGoal={deleteGoal} />
+      <NewTodoForm onSubmit={addTodo} />
+      <h1 className="header">Todo List</h1>
+      <TodoList todos={todos} toggleTodo={toggleTodo} deleteTodo={deleteTodo} />
     </>
-  );
+  )
 }
-
-export default App;
